@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import ShoeCard from './ShoeCard'
 
 function App() {
   return (
