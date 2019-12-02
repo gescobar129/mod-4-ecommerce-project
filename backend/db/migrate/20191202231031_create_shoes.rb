@@ -5,8 +5,7 @@ class CreateShoes < ActiveRecord::Migration[6.0]
       t.string :brand
       t.string :image
       t.integer :cost
-      
-      t.belongs_to :category     
+      t.belongs_to :category
     end
   end
 end
