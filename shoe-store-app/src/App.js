@@ -5,6 +5,7 @@ import Checkout from './Checkout';
 import WomanIndex from './WomanIndex';
 import MenIndex from './MenIndex';
 import NavbarComponent from './NavbarComponent'
+import ShoeShowPage from './ShoeShowPage'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +15,15 @@ import {
 import './App.css';
 import ShoeCard from './ShoeCard'
 
-function App() {
+class App extends React.Component {
+
+
+  shoePageWithProps = (routeProps) => {
+    return <ShoeShowPage location={routeProps.location} />
+  }
+
+  render() {
+  
   return (
     <Router>
       <NavbarComponent />
@@ -23,6 +32,12 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          
+          <Route 
+          path="/shoe-show-page" 
+          component= {this.shoePageWithProps}>
+          </Route>
+
           <Route path="/men-collection">
             <MenIndex />
           </Route>
@@ -45,6 +60,7 @@ function App() {
       </div>
     </Router>
   );
+}
 }
 
 function About() {
