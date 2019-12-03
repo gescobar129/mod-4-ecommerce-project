@@ -1,17 +1,6 @@
 class ApplicationController < ActionController::API
 
     private 
-    #TOKEN 
-
-    # def set_current_user
-    #     current_user = User.find_by()
-    # end 
-
-    # def authorized
-    #     if current_user == nil
-    #         render json: {"you arent logged in"}
-    #     end
-    # end 
 
     def token(user_id)
         payload = { user_id: user_id }

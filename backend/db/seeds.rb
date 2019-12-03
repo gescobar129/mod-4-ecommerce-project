@@ -1,3 +1,6 @@
+User.create(username: "gaida", password: "gaida")
+User.create(username: "oneil", password: "oneil")
+
 men = Category.create(name: "Men")
 women = Category.create(name: "Women")
 
