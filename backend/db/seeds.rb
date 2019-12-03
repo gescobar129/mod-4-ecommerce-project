@@ -16,3 +16,4 @@ Shoe.create(name: "Sawyer", brand: "Jimmy Choo", cost: 950, image: "https://us.j
 Shoe.create(name: "Odin", brand: "Jimmy Choo", cost: 1095, image: "https://us.jimmychoo.com/dw/image/v2/BDNT_PRD/on/demandware.static/-/Sites-jch-master-product-catalog/default/dw024996d3/images/original/ODINSIV_0C8042_SIDE.jpg?sw=520&sh=520&sm=fit", category: men)
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
+
