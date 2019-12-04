@@ -1,4 +1,4 @@
 class Shoe < ApplicationRecord  
-    belongs_to :category
-    # has_many :carts
+    belongs_to :category    
+    has_many :joiners
 end

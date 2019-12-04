@@ -1,3 +1,4 @@
 class Cart < ApplicationRecord
-    has_many :shoes
+    has_one :order
+    has_many :joiners
 end 

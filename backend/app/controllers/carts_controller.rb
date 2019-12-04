@@ -9,10 +9,10 @@ class CartsController < ApplicationController
         render json: cart
     end 
 
-    # def create
-    #     cart = Cart.create(cart_params)
-    #     render json: cart
-    # end 
+    def create
+        cart = Cart.create()
+        render json: cart
+    end 
 
     private
 
