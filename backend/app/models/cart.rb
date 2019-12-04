@@ -1,3 +1,3 @@
-class Category < ApplicationRecord
-    has_many :products
+class Cart < ApplicationRecord
+    has_many :shoes
 end 
