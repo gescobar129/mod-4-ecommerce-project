@@ -20,15 +20,15 @@ class UsersController < ApplicationController
         end 
     end 
 
-    def show
-        user_id = params[:id]
-        if current_user_id == user_id.to_i
-          user = User.find(user_id)
-          render json: user
-        else
-          render json: { "You done messed up" }, status: :unauthorized
-        end
-    end
+    # def show
+    #     user_id = params[:id]
+    #     if current_user_id == user_id.to_i
+    #       user = User.find(user_id)
+    #       render json: user
+    #     else
+    #       render json: { "You done messed up" }, status: :unauthorized
+    #     end
+    # end
 
     # def update
     #     user.update(user_params)
