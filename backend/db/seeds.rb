@@ -20,3 +20,4 @@ Shoe.create(name: "Odin", brand: "Jimmy Choo", cost: 1095, image: "https://us.ji
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 
+User.create(username: 'gaida', password: 'pass')
