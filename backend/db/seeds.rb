@@ -20,3 +20,33 @@ Shoe.create(name: "Odin", brand: "Jimmy Choo", cost: 1095, image: "https://us.ji
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 
+# ActiveRecord::Base.connection.tables.each do |t| 
+    #     ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    # end
+    
+    # require 'rest-client'
+    # require 'dotenv'
+    
+    # response = RestClient::Request.execute(
+    #     method: :get,
+    #     url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list",
+    #     headers: {"x-rapidapi-host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
+    #     "x-rapidapi-key": ENV["NYT_API_KEY"]}
+    
+    #     # byebug
+    # )
+    
+    # item_data = JSON.parse(response)["results"]
+    # debugger;
+    
+    
+    # item_data.each do |dataInfo|
+    
+    #     Shoe.create(
+    #         name: dataInfo["name"],
+    #         cost: dataInfo["price"]["value"].to_int,
+    #         image: dataInfo["images"]["url"],
+    #         brand: dataInfo["collection"]
+    #     )
+    # end
+
