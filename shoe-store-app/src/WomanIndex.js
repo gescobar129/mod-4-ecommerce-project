@@ -23,7 +23,7 @@ export default class WomanIndex extends Component {
       <Container>
         <Row>
           {this.state.shoes.map(shoe => {
-            return <ShoeCard shoe={shoe}/>
+            return <ShoeCard key={shoe.id} shoe={shoe}/>
           })}
         </Row>
       </Container>

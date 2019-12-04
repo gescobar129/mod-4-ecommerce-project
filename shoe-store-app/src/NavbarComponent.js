@@ -29,7 +29,7 @@ export default class NavbarComponent extends Component {
             </li>
           </ul>
           <span class="navbar-text">
-          <Link to="/signup"><img src={require('./user.png')}></img></Link>
+          {/* <Link to="/login"><img src={require('./user.png')}></img></Link> */}
           <Link to="/checkout"><img src={require('./cart.png')}></img></Link>
           </span>
         </div>

@@ -23,6 +23,7 @@ women = Category.create(name: "Women")
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 # Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
 
+<<<<<<< HEAD
 ActiveRecord::Base.connection.tables.each do |t| 
 ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
@@ -55,3 +56,6 @@ sleep(0.5)
 puts "Done!"
 sleep(0.5)
 puts "Seeded"
+=======
+User.create(username: 'gaida', password: 'pass')
+>>>>>>> 23ea4381b46872cb676efa5c8e2bf949bcb5b370
