@@ -23,6 +23,6 @@ class OrdersController < ApplicationController
     private 
 
     def order_params
-        params.permit(:user.id, :shoe.id)
+        params.permit(:user.id, :cart.id)
     end 
 end
