@@ -18,14 +18,20 @@ import ShoeCard from './ShoeCard'
 
 class App extends React.Component {
 
-  shoePageWithProps = (routeProps) => {
-    return <ShoeShowPage location={routeProps.location} />
-  }
-
-
   state = {
     token: null,
     loggedInUserId: null,
+    cartItems: []
+  }
+
+  addToCart = (shoe) => {
+    this.setState({
+      cartItems: [...this.state.cartItems, shoe]
+    })
+  }
+
+  shoePageWithProps = (routeProps) => {
+    return <ShoeShowPage location={routeProps.location} addToCart={this.addToCart} />
   }
 
   componentDidMount(){
@@ -68,7 +74,7 @@ class App extends React.Component {
     <div>
        { !!this.state.token ? <button onClick={ this.logOutClick }>Log out</button> : "" }
       <Router>
-      <NavbarComponent />
+      <NavbarComponent cartItems={this.state.cartItems} />
       <div>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -87,7 +93,7 @@ class App extends React.Component {
             <WomanIndex />
           </Route>
           <Route path="/checkout">
-            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId }/>
+            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} />
           </Route>
           <Route path="/login">
             <Login setToken={this.setToken} token={this.state.token} />

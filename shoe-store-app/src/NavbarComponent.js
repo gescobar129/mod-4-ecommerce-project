@@ -31,6 +31,7 @@ export default class NavbarComponent extends Component {
           <span class="navbar-text">
           {/* <Link to="/login"><img src={require('./user.png')}></img></Link> */}
           <Link to="/checkout"><img src={require('./cart.png')}></img></Link>
+          <h6>{this.props.cartItems.length}</h6>
           </span>
         </div>
       </nav>

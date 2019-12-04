@@ -4,7 +4,10 @@ import { Button } from 'reactstrap';
 
 export default class ShoeShowPage extends Component {
 
-  
+  handleClick = () => {
+    this.props.addToCart(this.props.location.state.shoe)
+  }
+
   render() {
 
     return (
@@ -16,7 +19,7 @@ export default class ShoeShowPage extends Component {
             <h3>{this.props.location.state.shoe.brand}</h3>
             <h5>{this.props.location.state.shoe.price}</h5>
             <Col>
-            <Button color="primary" size="lg">Add To Cart</Button>
+            <Button onClick={this.handleClick} color="primary" size="lg">Add To Cart</Button>
             </Col>
           </Col>
         </Row>
