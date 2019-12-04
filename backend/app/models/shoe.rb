@@ -1,5 +1,3 @@
-class Shoe < ApplicationRecord
-    has_many :orders
-    has_many :users, through: :orders
+class Shoe < ApplicationRecord  
     belongs_to :category
 end
