@@ -17,6 +17,44 @@ Shoe.create(name: "Voyager II/M", brand: "Jimmy Choo", cost: 1595, image: "https
 Shoe.create(name: "Grove", brand: "Jimmy Choo", cost: 595, image: "https://us.jimmychoo.com/dw/image/v2/BDNT_PRD/on/demandware.static/-/Sites-jch-master-product-catalog/default/dwb2bb1046/images/original/GROVEAFI_010003_SIDE.jpg?sw=520&sh=520&sm=fit", category: men)
 Shoe.create(name: "Sawyer", brand: "Jimmy Choo", cost: 950, image: "https://us.jimmychoo.com/dw/image/v2/BDNT_PRD/on/demandware.static/-/Sites-jch-master-product-catalog/default/dw98e94bfb/images/original/SAWYERSVV_026933_SIDE.jpg?sw=520&sh=520&sm=fit", category: men)
 Shoe.create(name: "Odin", brand: "Jimmy Choo", cost: 1095, image: "https://us.jimmychoo.com/dw/image/v2/BDNT_PRD/on/demandware.static/-/Sites-jch-master-product-catalog/default/dw024996d3/images/original/ODINSIV_0C8042_SIDE.jpg?sw=520&sh=520&sm=fit", category: men)
-# Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
-# Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
+Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
+Shoe.create(name:, brand: "Jimmy Choo", cost:, image:, category: )
+
+# ActiveRecord::Base.connection.tables.each do |t| 
+#     ActiveRecord::Base.connection.reset_pk_sequence!(t)
+# end
+
+# require 'rest-client'
+# require 'dotenv'
+
+# response = RestClient::Request.execute(
+#     method: :get,
+#     url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list",
+#     headers: {"x-rapidapi-host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
+#     "x-rapidapi-key": ENV["NYT_API_KEY"]}
+
+#     # byebug
+# )
+
+# item_data = JSON.parse(response)["results"]
+# debugger;
+
+
+# item_data.each do |dataInfo|
+
+#     Shoe.create(
+#         name: dataInfo["name"],
+#         cost: dataInfo["price"]["value"].to_int,
+#         image: dataInfo["images"]["url"],
+#         brand: dataInfo["collection"]
+#     )
+# end
+
+puts "Destroying all Users"
+sleep(0.5)
+puts "Destroying all 'Shoes'"
+sleep(0.5)
+puts "Done!"
+sleep(0.5)
+puts "Seeded"
 
