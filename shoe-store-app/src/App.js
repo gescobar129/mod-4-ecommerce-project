@@ -1,11 +1,12 @@
 import React from 'react';
 import Home from './Home';
-import Signup from './Signup';
+import Login from './Login';
 import Checkout from './Checkout';
 import WomanIndex from './WomanIndex';
 import MenIndex from './MenIndex';
 import NavbarComponent from './NavbarComponent'
 import ShoeShowPage from './ShoeShowPage'
+import About from './About'
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,15 +18,54 @@ import ShoeCard from './ShoeCard'
 
 class App extends React.Component {
 
-
   shoePageWithProps = (routeProps) => {
     return <ShoeShowPage location={routeProps.location} />
+  }
+
+
+  state = {
+    token: null,
+    loggedInUserId: null,
+  }
+
+  componentDidMount(){
+  // this.setToken({
+  //   token: localStorage.token,
+  //   user_id: localStorage.userId
+  // })
+    this.setState({
+      token: localStorage.token,
+      loggedInUserId: localStorage.userId
+    })
+  }
+
+  setToken = ({ token, user_id })  =>{
+
+    localStorage.token = token
+    localStorage.userId = user_id
+
+    this.setState({
+      token: token,
+      loggedInUserId: user_id
+    })
+  }
+
+  logOutClick = () => {
+    localStorage.userId = undefined
+    localStorage.token = undefined
+
+    this.setState({
+      loggedInUserId: null,
+      token: null
+    })
   }
 
   render() {
   
   return (
-    <Router>
+    <div>
+       { !!this.state.token ? <button onClick={ this.logOutClick }>Log out</button> : "" }
+      <Router>
       <NavbarComponent />
       <div>
 
@@ -45,10 +85,10 @@ class App extends React.Component {
             <WomanIndex />
           </Route>
           <Route path="/checkout">
-            <Checkout />
+            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId }/>
           </Route>
-          <Route path="/signup">
-            <Signup />
+          <Route path="/login">
+            <Login setToken={this.setToken} token={this.state.token} />
           </Route>
           <Route path="/about">
             <About />
@@ -59,13 +99,16 @@ class App extends React.Component {
         </Switch>
       </div>
     </Router>
+
+    {/* <div>
+    { !!this.state.token ? <button onClick={ this.logOutClick }>Log out</button> : "" }
+      {!!this.state.token ? <Home /> : <Login setToken={ this.setToken } />} */}
+    {/* </div> */}
+
+    </div>
+    
   );
 }
 }
-
-function About() {
-  return <h2>About</h2>;
-}
-
 
 export default App;
