@@ -34,9 +34,12 @@ class Login extends React.Component {
             errors: data.errors
           })
         } else {
+          console.log(data)
           this.props.setToken(data)
         }
       })
+      .catch(e => 
+        console.log(e))
   }
 
   signUpSubmitted = (event) => {

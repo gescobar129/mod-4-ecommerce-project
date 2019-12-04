@@ -41,6 +41,8 @@ class App extends React.Component {
 
   setToken = ({ token, user_id })  =>{
 
+    console.log(token, user_id)
+
     localStorage.token = token
     localStorage.userId = user_id
 
