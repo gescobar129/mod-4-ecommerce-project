@@ -1,15 +1,35 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
-import CartShoeCard from './CartShoeCard'
+import CartShoeCard from './CartShoeCard';
+import { Container, Row, Col } from 'reactstrap';
 
 export default class Checkout extends Component {
+
+getTotal = () => {
+  let total = 0
+  this.props.cartItems.forEach(item => {
+    total += item.cost
+  })
+  return total
+}
   render() {
     if (!this.props.token) return <Redirect to='/login' />
     return (
       <div>
-        {this.props.cartItems.map(item => {
-            return <CartShoeCard item={item}/>
-          })}
+
+        <Container>
+          <Row>
+            <Col xs="6">
+            {this.props.cartItems.map(item => {
+              return <CartShoeCard item={item}/>
+            })}
+            </Col>
+            <Col xs="6">
+              Total: ${this.getTotal()}
+            </Col>
+          </Row>
+        </Container>
+        
       </div>
     )
   }

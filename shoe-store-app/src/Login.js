@@ -44,6 +44,26 @@ class Login extends React.Component {
 
   signUpSubmitted = (event) => {
     event.preventDefault() 
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    }).then(res => res.json())
+      .then(data => {
+        if (data.errors) {
+          this.setState({
+            errors: data.errors
+          })
+        } else {
+          console.log(data)
+          this.props.setToken(data)
+        }
+      })
   }
 
   render(){
