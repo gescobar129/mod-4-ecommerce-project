@@ -13,5 +13,4 @@ class OrderSerializer < ActiveModel::Serializer
     summ = self.object.shoes.sum(:cost)
     number_to_currency(summ)
   end 
-
 end
