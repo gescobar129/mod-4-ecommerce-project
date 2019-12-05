@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_231031) do
+ActiveRecord::Schema.define(version: 2019_12_05_164501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,16 @@ ActiveRecord::Schema.define(version: 2019_12_02_231031) do
     t.string "name"
   end
 
+  create_table "joiners", force: :cascade do |t|
+    t.bigint "shoes_id"
+    t.bigint "orders_id"
+    t.index ["orders_id"], name: "index_joiners_on_orders_id"
+    t.index ["shoes_id"], name: "index_joiners_on_shoes_id"
+  end
+
   create_table "orders", force: :cascade do |t|
+    t.boolean "paid"
     t.bigint "user_id"
-    t.bigint "shoe_id"
-    t.index ["shoe_id"], name: "index_orders_on_shoe_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

@@ -1,4 +1,4 @@
 class Joiner < ApplicationRecord
-    belongs_to :shoes
-    belongs_to :cart
+    belongs_to :shoe
+    belongs_to :order
 end 

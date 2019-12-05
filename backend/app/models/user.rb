@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :carts
-    has_many :joiners, through: :carts
+    has_many :orders
+    has_many :joiners, through: :orders
     has_many :shoes, through: :joiners
 
     has_secure_password 
