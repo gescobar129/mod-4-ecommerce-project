@@ -72,9 +72,8 @@ class App extends React.Component {
   
   return (
     <div>
-       { !!this.state.token ? <button onClick={ this.logOutClick }>Log out</button> : "" }
       <Router>
-      <NavbarComponent cartItems={this.state.cartItems} />
+      <NavbarComponent logOutClick={this.logOutClick} token={this.state.token} cartItems={this.state.cartItems} />
       <div>
 
         {/* A <Switch> looks through its children <Route>s and

@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+import './NavbarComponent.css'
 
 export default class NavbarComponent extends Component {
   render() {
@@ -29,7 +30,7 @@ export default class NavbarComponent extends Component {
             </li>
           </ul>
           <span class="navbar-text">
-          {/* <Link to="/login"><img src={require('./user.png')}></img></Link> */}
+          { !!this.props.token ? <button className="logout-btn" onClick={ this.props.logOutClick }>Log Out</button> : "" }
           <Link to="/checkout"><img src={require('./cart.png')}></img></Link>
           <h6>{this.props.cartItems.length}</h6>
           </span>
