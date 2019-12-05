@@ -25,9 +25,12 @@ class App extends React.Component {
   }
 
   addToCart = (shoe) => {
+
+    // fetch('')
     this.setState({
       cartItems: [...this.state.cartItems, shoe]
     })
+
   }
 
   shoePageWithProps = (routeProps) => {
