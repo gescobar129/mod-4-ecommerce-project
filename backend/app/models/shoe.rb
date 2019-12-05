@@ -1,5 +1,5 @@
 class Shoe < ApplicationRecord
-    has_many :orders
-    has_many :users, through: :orders
+    has_many :joiners
+    has_many :carts, through: :joiners
     belongs_to :category
 end
