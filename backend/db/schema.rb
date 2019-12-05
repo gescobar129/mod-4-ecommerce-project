@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 2019_12_05_164501) do
   end
 
   create_table "joiners", force: :cascade do |t|
-    t.bigint "shoes_id"
-    t.bigint "orders_id"
-    t.index ["orders_id"], name: "index_joiners_on_orders_id"
-    t.index ["shoes_id"], name: "index_joiners_on_shoes_id"
+    t.bigint "shoe_id"
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_joiners_on_order_id"
+    t.index ["shoe_id"], name: "index_joiners_on_shoe_id"
   end
 
   create_table "orders", force: :cascade do |t|
