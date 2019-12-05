@@ -1,6 +1,20 @@
+.banner {
+  display: flex;
+  justify-content: center;
+  padding: 12px 15px;
+  background-color: rgb(33, 42, 47);
+  color: white
+}
 .logout-btn {
   background-color: #4CAF50;
   border-radius: 12px;
   color: white;
   /* display: inline-block; */
 }
+
+/* .navbar {
+  min-height: 80px;
+} */
+
+
+

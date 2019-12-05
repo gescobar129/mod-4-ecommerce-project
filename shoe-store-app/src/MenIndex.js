@@ -18,6 +18,7 @@ export default class MenIndex extends Component {
     fetch('http://localhost:3000/shoes')
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       this.setState({
         shoes: data.filter(element => element.category.name === 'Men')
       })
