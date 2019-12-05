@@ -1,11 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+
 
 export default class CartShoeCard extends Component {
   render() {
     return (
       <div>
-        {this.props.item.name}
-        <img src={this.props.item.image}></img>
+        <Card>
+        <CardBody>
+          <CardTitle>{this.props.item.name}</CardTitle>
+          <CardSubtitle>{this.props.item.price}</CardSubtitle>
+        </CardBody>
+        <img width="25%" src={this.props.item.image} alt="Card image cap" />
+      </Card>
       </div>
     )
   }

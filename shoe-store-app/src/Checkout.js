@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import CartShoeCard from './CartShoeCard';
 import { Container, Row, Col } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 export default class Checkout extends Component {
 
@@ -25,7 +26,8 @@ getTotal = () => {
             })}
             </Col>
             <Col xs="6">
-              Total: ${this.getTotal()}
+              <div>Total: ${this.getTotal()}</div><br></br>
+              <Button color="primary" size="lg">Place Order</Button>
             </Col>
           </Row>
         </Container>

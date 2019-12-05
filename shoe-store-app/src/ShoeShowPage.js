@@ -6,6 +6,7 @@ export default class ShoeShowPage extends Component {
 
   handleClick = () => {
     this.props.addToCart(this.props.location.state.shoe)
+    //this is also going to make a post request to the joiner model when you click add to cart
   }
 
   render() {
