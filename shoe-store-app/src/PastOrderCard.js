@@ -1,17 +1,37 @@
 import React, { Component } from 'react'
+import { Container, Row, Col } from 'reactstrap';
+import {
+  Card, CardImg, CardText, CardBody, CardLink,
+  CardTitle, CardSubtitle
+} from 'reactstrap';
 
 export default class PastOrderCard extends Component {
   render() {
     // debugger
     return (
-      <div>
-        <h1>Total Cost: {this.props.po.total_cost}</h1>
-        <h1>Total Items: {this.props.po.total_items}</h1>
-        {this.props.po.shoe_names.map(sn => {
-          return  <h4>{sn}</h4>
-        })}
-       
-      </div>
+      <Container className="themed-container" fluid="lg">
+
+        <Row xs="2">
+          <Col>
+            <div>
+              <Card>
+                <CardBody>
+                  <CardTitle><h3>Order</h3></CardTitle>
+                  <CardSubtitle>Total Cost: {this.props.po.total_cost} </CardSubtitle><br></br>
+                  <CardSubtitle>Total Items: {this.props.po.total_items}</CardSubtitle>
+                </CardBody>
+                <CardBody>
+                  <CardText>Shoes Purchased: {this.props.po.shoe_names.map(sn => {
+                    return  <li>{sn}</li>})}
+                  </CardText>
+                </CardBody>
+              </Card>
+            </div>
+          
+          </Col>
+        </Row>
+      </Container>
+      
     )
   }
 }

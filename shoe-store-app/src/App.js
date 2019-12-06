@@ -24,7 +24,14 @@ class App extends React.Component {
     token: null,
     loggedInUserId: null,
     cartItems: [],
-    initializedCart: {}
+    initializedCart: {},
+    username: ''
+  }
+
+  getUsername = (username) => {
+    this.setState({
+      username: username
+    })
   }
 
   clearCartItems = () => {
@@ -108,7 +115,7 @@ class App extends React.Component {
   return (
     <div>
       <Router>
-      <NavbarComponent logOutClick={this.logOutClick} token={this.state.token} cartItems={this.state.cartItems} />
+      <NavbarComponent logOutClick={this.logOutClick} token={this.state.token} cartItems={this.state.cartItems} username={this.state.username}/>
       <div>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -137,7 +144,7 @@ class App extends React.Component {
             <Checkout clearCartItems={this.clearCartItems} token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} initializedCart={this.state.initializedCart} getOrder={this.getOrder} />
           </Route>
           <Route path="/login">
-            <Login setToken={this.setToken} token={this.state.token} getOrder={this.getOrder}/>
+            <Login setToken={this.setToken} token={this.state.token} getOrder={this.getOrder} getUsername={this.getUsername}/>
           </Route>
           <Route path="/about">
             <About />

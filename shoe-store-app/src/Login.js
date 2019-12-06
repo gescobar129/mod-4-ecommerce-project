@@ -17,6 +17,10 @@ class Login extends React.Component {
     })
   }
 
+  // getUsername = () => {
+  //   this.state.username
+  // }
+
   logInSubmitted = (event) => {
     event.preventDefault()
     fetch("http://localhost:3000/login", {
@@ -31,6 +35,7 @@ class Login extends React.Component {
     }).then(res => res.json())
       .then(data => {
         // debugger
+        
         if (data.errors) {
           this.setState({
             errors: data.errors
@@ -49,6 +54,8 @@ class Login extends React.Component {
             })
           }).then(response => response.json())
           .then(data => {
+            debugger
+            this.props.getUsername(data.user.username)
             this.props.getOrder(data)
           })
         }
