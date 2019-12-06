@@ -32,6 +32,9 @@ export default class NavbarComponent extends Component {
             <li class="nav-item">
             <Link to="/about"><a class="nav-link" href="#">About</a></Link>
             </li>
+            <li class="nav-item">
+            <Link to="/past-orders"><a class="nav-link" href="#">Past Orders</a></Link>
+            </li>
           </ul>
           <span class="navbar-text">
           { !!this.props.token ? <button className="logout-btn" onClick={ this.props.logOutClick }>Log Out</button> : "" }
