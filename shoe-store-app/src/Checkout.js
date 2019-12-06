@@ -33,6 +33,23 @@ payForItems = () => {
   .then(data => {
     console.log('data', data)
   })
+
+  this.props.clearCartItems()
+
+  fetch("http://localhost:3000/orders", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              paid: false,
+              user_id: this.props.loggedInUserId
+            })
+          }).then(response => response.json())
+          .then(data => {
+            this.props.getOrder(data)
+          })
 }
 
   render() {

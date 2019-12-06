@@ -7,6 +7,7 @@ import MenIndex from './MenIndex';
 import NavbarComponent from './NavbarComponent'
 import ShoeShowPage from './ShoeShowPage'
 import About from './About'
+import PastOrders from './PastOrders'
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +25,12 @@ class App extends React.Component {
     loggedInUserId: null,
     cartItems: [],
     initializedCart: {}
+  }
+
+  clearCartItems = () => {
+    this.setState({
+      cartItems: []
+    })
   }
 
   getOrder = (order) => {
@@ -117,6 +124,9 @@ class App extends React.Component {
           component= {this.shoePageWithProps}>
           </Route>
 
+          <Route path="/past-orders">
+            <PastOrders loggedInUserId={ this.state.loggedInUserId } />
+          </Route>
           <Route path="/men-collection">
             <MenIndex />
           </Route>
@@ -124,7 +134,7 @@ class App extends React.Component {
             <WomanIndex />
           </Route>
           <Route path="/checkout">
-            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} initializedCart={this.state.initializedCart} />
+            <Checkout clearCartItems={this.clearCartItems} token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} initializedCart={this.state.initializedCart} getOrder={this.getOrder} />
           </Route>
           <Route path="/login">
             <Login setToken={this.setToken} token={this.state.token} getOrder={this.getOrder}/>
