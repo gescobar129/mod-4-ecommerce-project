@@ -20,6 +20,17 @@ class OrdersController < ApplicationController
         end 
     end 
 
+    def update 
+        order = Order.find(params[:id])
+        order.update(order_params)
+
+        if order.valid?
+            render json: order
+        else 
+            render json: {error: "This update did not work"}
+        end 
+    end
+
     private 
 
     def order_params

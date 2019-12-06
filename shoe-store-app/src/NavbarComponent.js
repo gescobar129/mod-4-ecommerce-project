@@ -3,12 +3,16 @@ import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 import './NavbarComponent.css'
 
 export default class NavbarComponent extends Component {
   render() {
     return (
       <div>
+        <Row>
+        <Col className='banner'>Free Shipping On Orders Over $50 </Col>
+        </Row>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">OG Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

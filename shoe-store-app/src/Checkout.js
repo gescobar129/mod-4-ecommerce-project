@@ -3,6 +3,11 @@ import { Redirect } from 'react-router-dom';
 import CartShoeCard from './CartShoeCard';
 import { Container, Row, Col } from 'reactstrap';
 import { Button } from 'reactstrap';
+import ThankYou from './ThankYou'
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
 
 export default class Checkout extends Component {
 
@@ -13,6 +18,23 @@ getTotal = () => {
   })
   return total
 }
+
+payForItems = () => {
+  fetch("http://localhost:3000/orders/" + this.props.initializedCart.id, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      ...this.props.initializedCart,
+      paid: true
+    })
+  }).then(response => response.json())
+  .then(data => {
+    console.log('data', data)
+  })
+}
+
   render() {
     if (!this.props.token) return <Redirect to='/login' />
     return (
@@ -27,7 +49,7 @@ getTotal = () => {
             </Col>
             <Col xs="6">
               <div>Total: ${this.getTotal()}</div><br></br>
-              <Button color="primary" size="lg">Place Order</Button>
+              <Link to="/thankyou"><Button onClick={this.payForItems} color="primary" size="lg">Place Order</Button></Link>
             </Col>
           </Row>
         </Container>
