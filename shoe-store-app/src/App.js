@@ -4,8 +4,9 @@ import Login from './Login';
 import Checkout from './Checkout';
 import WomanIndex from './WomanIndex';
 import MenIndex from './MenIndex';
-import NavbarComponent from './NavbarComponent'
-import ShoeShowPage from './ShoeShowPage'
+import NavbarComponent from './NavbarComponent';
+import ShoeShowPage from './ShoeShowPage';
+import PastOrders from './PastOrders';
 import About from './About'
 import {
   BrowserRouter as Router,
@@ -122,6 +123,9 @@ class App extends React.Component {
           </Route>
           <Route path="/woman-collection">
             <WomanIndex />
+          </Route>
+          <Route path="/past-orders">
+            <PastOrders loggedInUserId={ this.state.loggedInUserId } token={this.state.token}/>
           </Route>
           <Route path="/checkout">
             <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} initializedCart={this.state.initializedCart} />

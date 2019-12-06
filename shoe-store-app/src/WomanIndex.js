@@ -13,7 +13,7 @@ export default class WomanIndex extends Component {
     .then(response => response.json())
     .then(data => {
       this.setState({
-        shoes: data.filter(element => element.category.name === 'Women')
+        shoes: data.filter(element => element.gender === 'Women')
       })
     })
   }

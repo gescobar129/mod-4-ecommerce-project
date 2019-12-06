@@ -20,7 +20,7 @@ export default class MenIndex extends Component {
     .then(data => {
       console.log(data)
       this.setState({
-        shoes: data.filter(element => element.category.name === 'Men')
+        shoes: data.filter(element => element.gender === 'Men')
       })
     })
   }

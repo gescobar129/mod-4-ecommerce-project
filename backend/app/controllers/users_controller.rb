@@ -5,6 +5,11 @@ class UsersController < ApplicationController
         render json: users 
     end
 
+    def show
+        user = User.find(params[:id])
+        render json: user
+    end 
+
     def create
         user = User.create(user_params)
         
@@ -13,23 +18,7 @@ class UsersController < ApplicationController
         else
             render json: {error: user.errors.full_messages}, status: :unprocessable_entity
         end 
-    end 
-
-    # def show
-    #     user_id = params[:id]
-    #     if current_user_id == user_id.to_i
-    #       user = User.find(user_id)
-    #       render json: user
-    #     else
-    #       render json: { "You done messed up" }, status: :unauthorized
-    #     end
-    # end
-
-    # def update
-    #     user.update(user_params)
-    #     render json: user
-
-    # end 
+    end  
 
     private
 
