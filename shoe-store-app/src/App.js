@@ -15,18 +15,43 @@ import {
 } from "react-router-dom";
 import './App.css';
 import ShoeCard from './ShoeCard'
+import ThankYou from './ThankYou'
 
 class App extends React.Component {
 
   state = {
     token: null,
     loggedInUserId: null,
-    cartItems: []
+    cartItems: [],
+    initializedCart: {}
+  }
+
+  getOrder = (order) => {
+    this.setState({
+      initializedCart: order
+    })
   }
 
   addToCart = (shoe) => {
+    console.log(this.state.initializedCart)
     this.setState({
       cartItems: [...this.state.cartItems, shoe]
+    })
+    fetch("http://localhost:3000/joiners", {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        shoe_id: shoe.id,
+        order_id: this.state.initializedCart.id
+      })
+    }).then(response => response.json())
+    .then(data => {
+      fetch("http://localhost:3000/orders/" + this.state.initializedCart.id).then(response => response.json())
+      .then(data => {
+        this.getOrder(data)
+      })
     })
   }
 
@@ -69,17 +94,23 @@ class App extends React.Component {
   }
 
   render() {
+
+    // debugger
+    // console.log(this.state.initializedCart)
   
   return (
     <div>
-       { !!this.state.token ? <button onClick={ this.logOutClick }>Log out</button> : "" }
       <Router>
-      <NavbarComponent cartItems={this.state.cartItems} />
+      <NavbarComponent logOutClick={this.logOutClick} token={this.state.token} cartItems={this.state.cartItems} />
       <div>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+
+          <Route path="/thankyou">
+            <ThankYou />
+          </Route>
           
           <Route 
           path="/shoe-show-page" 
@@ -93,10 +124,10 @@ class App extends React.Component {
             <WomanIndex />
           </Route>
           <Route path="/checkout">
-            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} />
+            <Checkout token={this.state.token} loggedInUserId={ this.state.loggedInUserId } cartItems={this.state.cartItems} initializedCart={this.state.initializedCart} />
           </Route>
           <Route path="/login">
-            <Login setToken={this.setToken} token={this.state.token} />
+            <Login setToken={this.setToken} token={this.state.token} getOrder={this.getOrder}/>
           </Route>
           <Route path="/about">
             <About />

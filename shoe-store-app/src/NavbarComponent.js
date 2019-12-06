@@ -3,11 +3,16 @@ import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
+import './NavbarComponent.css'
 
 export default class NavbarComponent extends Component {
   render() {
     return (
       <div>
+        <Row>
+        <Col className='banner'>Free Shipping On Orders Over $50 </Col>
+        </Row>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">OG Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +34,7 @@ export default class NavbarComponent extends Component {
             </li>
           </ul>
           <span class="navbar-text">
-          {/* <Link to="/login"><img src={require('./user.png')}></img></Link> */}
+          { !!this.props.token ? <button className="logout-btn" onClick={ this.props.logOutClick }>Log Out</button> : "" }
           <Link to="/checkout"><img src={require('./cart.png')}></img></Link>
           <h6>{this.props.cartItems.length}</h6>
           </span>

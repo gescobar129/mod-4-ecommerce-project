@@ -7,7 +7,8 @@ class Login extends React.Component {
     logIn: true,
     username: "",
     password: "",
-    errors: []
+    errors: [],
+    currentCart: {}
   }
 
   onChange = event => {
@@ -29,17 +30,29 @@ class Login extends React.Component {
       })
     }).then(res => res.json())
       .then(data => {
+        // debugger
         if (data.errors) {
           this.setState({
             errors: data.errors
           })
         } else {
-          console.log(data)
           this.props.setToken(data)
+          fetch("http://localhost:3000/orders", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              paid: false,
+              user_id: data.user_id
+            })
+          }).then(response => response.json())
+          .then(data => {
+            this.props.getOrder(data)
+          })
         }
       })
-      .catch(e => 
-        console.log(e))
   }
 
   signUpSubmitted = (event) => {
@@ -60,7 +73,6 @@ class Login extends React.Component {
             errors: data.errors
           })
         } else {
-          console.log(data)
           this.props.setToken(data)
         }
       })
@@ -68,6 +80,8 @@ class Login extends React.Component {
 
   render(){
 
+// debugger 
+    // console.log(this.state.user)
     if (this.props.token) return <Redirect to='/checkout' />
 
     return <>
