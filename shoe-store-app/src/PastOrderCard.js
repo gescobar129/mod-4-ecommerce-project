@@ -16,7 +16,7 @@ export default class PastOrderCard extends Component {
             <div>
               <Card>
                 <CardBody>
-                  <CardTitle><h3>Order</h3></CardTitle>
+                  <CardTitle><h3>Order #{this.props.po.id}</h3></CardTitle>
                   <CardSubtitle>Total Cost: {this.props.po.total_cost} </CardSubtitle><br></br>
                   <CardSubtitle>Total Items: {this.props.po.total_items}</CardSubtitle>
                 </CardBody>

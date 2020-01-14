@@ -6,12 +6,20 @@
   color: white
 }
 .logout-btn {
-  background-color: #4CAF50;
+  background-color: red;
   border-radius: 12px;
   color: white;
   /* display: inline-block; */
 }
 
+.navbar-text {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: flex-end
+
+}
 /* .navbar {
   min-height: 80px;
 } */

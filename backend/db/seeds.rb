@@ -26,8 +26,9 @@ Shoe.create(name: "Odin", brand: "Jimmy Choo", cost: 1095, image: "https://us.ji
 # ActiveRecord::Base.connection.reset_pk_sequence!(t)
 # end
 
-# require 'rest-client'
 # require 'dotenv'
+# require 'rest-client'
+
 
 # response = RestClient::Request.execute(
 #     method: :get,

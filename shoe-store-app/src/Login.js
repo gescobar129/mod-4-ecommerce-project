@@ -54,7 +54,7 @@ class Login extends React.Component {
             })
           }).then(response => response.json())
           .then(data => {
-            debugger
+            // debugger
             this.props.getUsername(data.user.username)
             this.props.getOrder(data)
           })

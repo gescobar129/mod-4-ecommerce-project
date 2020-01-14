@@ -8,6 +8,8 @@ import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutFrom from './CheckoutForm'
 
 export default class Checkout extends Component {
 
@@ -31,7 +33,7 @@ payForItems = () => {
     })
   }).then(response => response.json())
   .then(data => {
-    console.log('data', data)
+    // console.log('data', data)
   })
 
   this.props.clearCartItems()
@@ -55,6 +57,7 @@ payForItems = () => {
   render() {
     if (!this.props.token) return <Redirect to='/login' />
     return (
+      <StripeProvider apiKey="pk_test_8bbC7B605qDELV8i8e3ZuW7U007yMC4TBG">
       <div>
 
         <Container>
@@ -66,12 +69,16 @@ payForItems = () => {
             </Col>
             <Col xs="6">
               <div>Total: ${this.getTotal()}</div><br></br>
-              <Link to="/thankyou"><Button onClick={this.payForItems} color="primary" size="lg">Place Order</Button></Link>
+              {/* <Link to="/thankyou"><Button onClick={this.payForItems} color="primary" size="lg">Place Order</Button></Link> */}
+              <Elements>
+                <CheckoutFrom payForItems={this.payForItems} orderId={this.props.initializedCart.id} />
+              </Elements>
             </Col>
           </Row>
         </Container>
         
       </div>
+      </StripeProvider>
     )
   }
 }

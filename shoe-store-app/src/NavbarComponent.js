@@ -29,19 +29,19 @@ export default class NavbarComponent extends Component {
             <li class="nav-item">
             <Link to="/woman-collection"><a class="nav-link" href="#">Woman</a></Link>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
             <Link to="/about"><a class="nav-link" href="#">About</a></Link>
-            </li>
+            </li> */}
             <li class="nav-item">
-            <Link to="/past-orders"><a class="nav-link" href="#">Past Orders</a></Link>
+            {!!this.props.token ? <Link to="/past-orders"><a class="nav-link" href="#">Past Orders</a></Link> : " "}
             </li>
           </ul>
-          <span class="navbar-text">
-            {!!this.props.token ? <h5>Welcome,{this.props.username}!</h5> : " "}
-          { !!this.props.token ? <button className="logout-btn" onClick={ this.props.logOutClick }>Log Out</button> : "" }
-          <Link to="/checkout"><img src={require('./cart.png')}></img></Link>
-          <h6>{this.props.cartItems.length}</h6>
-          </span>
+          <div class="navbar-text">
+            {!!this.props.token ? <h5>Welcome, { this.props.username}!</h5> : " "}
+          { !!this.props.token ? <button className="logout-btn" style={{marginLeft: 20}}onClick={ this.props.logOutClick }>Log Out</button> : "" }
+          <Link to="/checkout"><img src={require('./cart.png')} style={{marginLeft: 20}}></img></Link>
+          <h6 style={{marginLeft: 20, fontSize: 22}}>{this.props.cartItems.length}</h6>
+          </div>
         </div>
       </nav>
     </div>

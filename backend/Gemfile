@@ -6,10 +6,8 @@ ruby '2.6.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rest-client'
 
-group :development, :test do 
-  gem 'dotenv-rails'
-  gem 'rspec-rails'
-end
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
@@ -47,5 +45,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
+gem 'dotenv-rails', groups: [:development, :test] 
 gem "jwt", "~> 2.2"
+gem 'stripe'

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
 
     private 
 
-    def token(user_id)
+      def token(user_id)
         payload = { user_id: user_id }
         JWT.encode(payload, hmac_secret, 'HS256')
       end

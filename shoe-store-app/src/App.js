@@ -21,8 +21,8 @@ import ThankYou from './ThankYou'
 class App extends React.Component {
 
   state = {
-    token: null,
-    loggedInUserId: null,
+    token: localStorage.token,
+    loggedInUserId: localStorage.userId,
     cartItems: [],
     initializedCart: {},
     username: ''
@@ -73,20 +73,20 @@ class App extends React.Component {
     return <ShoeShowPage location={routeProps.location} addToCart={this.addToCart} />
   }
 
-  componentDidMount(){
-  // this.setToken({
-  //   token: localStorage.token,
-  //   user_id: localStorage.userId
-  // })
-    this.setState({
-      token: localStorage.token,
-      loggedInUserId: localStorage.userId
-    })
-  }
+  // componentDidMount(){
+  // // this.setToken({
+  // //   token: localStorage.token,
+  // //   user_id: localStorage.userId
+  // // })
+  //   this.setState({
+  //     token: localStorage.token,
+  //     loggedInUserId: localStorage.userId
+  //   })
+  // }
 
   setToken = ({ token, user_id })  =>{
 
-    console.log(token, user_id)
+    // console.log(token, user_id)
 
     localStorage.token = token
     localStorage.userId = user_id
@@ -98,8 +98,9 @@ class App extends React.Component {
   }
 
   logOutClick = () => {
-    localStorage.userId = undefined
-    localStorage.token = undefined
+    localStorage.clear()
+    // localStorage.userId = undefined
+    // localStorage.token = undefined
 
     this.setState({
       loggedInUserId: null,
@@ -110,7 +111,7 @@ class App extends React.Component {
   render() {
 
     // debugger
-    // console.log(this.state.initializedCart)
+    console.log(this.state.initializedCart)
   
   return (
     <div>
